@@ -15,9 +15,11 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: SafeArea(child: SingleChildScrollView(
+      body: SafeArea(
+        child: SingleChildScrollView(
         padding: EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,15 +39,46 @@ class _LoginState extends State<Login> {
             Spacebetween(height: 10,),
             KText(text: "Login to your LinkUp accout",fontSize: 15,color: AppColors.h2,),
             KText(text: "and stay connected to the people who matter",fontSize: 15,color: AppColors.h2,),
-            Spacebetween(height: 20,),
-            TextFormFields(
+            Spacebetween(height: 30,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              KText(text: "Email"),
+              TextFormFields(
               prefixIcon: Icon(Icons.mail),
-              labelText: "Email",
               hintText: "Jon@gmail.com",
-              borderRadius: BorderRadius.circular(10),
+              // borderRadius: BorderRadius.circular(20),
               borderColor: Colors.black,
             ),
-            Spacebetween(height: 10,)
+            Spacebetween(height: 20),
+            KText(text: "Password"),
+            TextFormFields(
+              prefixIcon: Icon(Icons.lock),
+              suffixIcon: IconButton(
+                onPressed: (){
+                  
+                }, icon: Icon(Icons.remove_red_eye),
+                ),
+              hintText: "Enter your password",
+              borderRadius: BorderRadius.circular(20),
+              borderColor: Colors.black,
+            ),
+            Spacebetween(height: 20),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                KText(text: "Forgot Password?",fontSize: 15,color: AppColors.buttonColor,fontWeight: FontWeight.bold,),
+              ],
+            ),
+            Spacebetween(height: 20),
+            Kbutton(
+              text: "Log In",
+            ),
+            Spacebetween(height: 20),
+            CustomDivider(),
+
           ],
         ),
       )),

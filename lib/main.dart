@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkup/Screens/home_screen.dart';
 import 'package:linkup/Screens/login.dart';
+import 'package:linkup/Screens/signup.dart';
 import 'package:linkup/Screens/splash_screen.dart';
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        body: Login(),
+        body: Signup(),
         ),
     );
   }

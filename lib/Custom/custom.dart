@@ -52,21 +52,26 @@ class Spacebetween extends StatelessWidget {
 // 
 // Custom TextFormFields
 class TextFormFields extends StatefulWidget {
-  String? labelText,hintText;
-  BorderRadius? borderRadius;
+  String? hintText;
+  BorderRadius? borderRadius ;
   Color? borderColor;
   Icon? prefixIcon;
-  Icon? suffixIcon;
+  IconButton? suffixIcon;
+  bool? obscure;
+  VoidCallback? callback;
+  IconButton? iconButton;
 
 
 
   TextFormFields({super.key, 
-  this.labelText,
   this.hintText, 
   this.borderRadius,
   this.borderColor,
   this.prefixIcon,
   this.suffixIcon,
+  this.obscure,
+  this.callback,
+  this.iconButton,
   
   });
 
@@ -78,30 +83,106 @@ class _TextFormFieldsState extends State<TextFormFields> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: widget.obscure ?? false,
       decoration: InputDecoration(
-        labelText: widget.labelText,
         hintText: widget.hintText,
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
         ),
         border: OutlineInputBorder(
-          borderRadius: widget.borderRadius!,
+          borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(
-            color: widget.borderColor!,
+            color: Colors.black,
             width: 2,
           ),
         ),
         filled: true,
         fillColor: Colors.white,
+        hoverColor: Colors.white,
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(
+            width: 2,
             color: Colors.grey,
           ),
         ),
       ),
 
     );
+  }
+}
+// 
+// 
+// 
+//
+class Kbutton extends StatefulWidget {
+  String? text;
+   Kbutton({super.key, this.text});
+
+  @override
+  State<Kbutton> createState() => _KbuttonState();
+}
+
+class _KbuttonState extends State<Kbutton> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 40,
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+      backgroundColor: AppColors.buttonColor,
+      foregroundColor: Colors.white, // text color
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+        ),
+        child: Text(widget.text!),
+      ),
+    );
+  }
+} 
+// 
+// 
+// 
+// Custom Divider
+class CustomDivider extends StatelessWidget {
+  const CustomDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+  children: [
+    Expanded(
+      child: Divider(
+        thickness: 1,
+        color: Colors.grey,
+      ),
+    ),
+
+    Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Text(
+        "or continue with",
+        style: TextStyle(
+          color: Colors.grey,
+          fontSize: 14,
+        ),
+      ),
+    ),
+
+    Expanded(
+      child: Divider(
+        thickness: 1,
+        color: Colors.grey,
+      ),
+    ),
+  ],
+);
   }
 }
