@@ -60,6 +60,8 @@ class TextFormFields extends StatefulWidget {
   bool? obscure;
   VoidCallback? callback;
   IconButton? iconButton;
+  TextEditingController controller;
+  late String? Function(String?) validator;
 
 
 
@@ -72,6 +74,8 @@ class TextFormFields extends StatefulWidget {
   this.obscure,
   this.callback,
   this.iconButton,
+  required this.controller,
+  required this.validator,
   
   });
 
@@ -83,6 +87,7 @@ class _TextFormFieldsState extends State<TextFormFields> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       obscureText: widget.obscure ?? false,
       decoration: InputDecoration(
         hintText: widget.hintText,
@@ -119,7 +124,8 @@ class _TextFormFieldsState extends State<TextFormFields> {
 //
 class Kbutton extends StatefulWidget {
   String? text;
-   Kbutton({super.key, this.text});
+  VoidCallback? callback;
+   Kbutton({super.key, this.text, this.callback});
 
   @override
   State<Kbutton> createState() => _KbuttonState();
@@ -129,10 +135,10 @@ class _KbuttonState extends State<Kbutton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 50,
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: widget.callback,
         style: ElevatedButton.styleFrom(
       backgroundColor: AppColors.buttonColor,
       foregroundColor: Colors.white, // text color
@@ -185,4 +191,18 @@ class CustomDivider extends StatelessWidget {
   ],
 );
   }
+}
+
+void navigateTo(BuildContext context, Widget page){
+Navigator.push(context, MaterialPageRoute(builder: (_)=> page));
+}
+void goBack(BuildContext context) {
+  Navigator.pop(context);
+}
+void navigateAndRemove(BuildContext context, Widget page) {
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(builder: (_) => page),
+    (route) => false,
+  );
 }
