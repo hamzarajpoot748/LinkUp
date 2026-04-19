@@ -5,7 +5,10 @@ import 'package:linkup/Screens/home_screen.dart';
 import 'package:linkup/Screens/login.dart';
 import 'package:linkup/Screens/signup.dart';
 import 'package:linkup/Screens/splash_screen.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+void main()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
