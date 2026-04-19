@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkup/Custom/custom.dart';
 import 'package:linkup/Custom/custom_homescreen.dart';
+import 'package:linkup/Screens/chat_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,13 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        title: KText(text: "LinkUp",color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold,),
+        title: KText(text: "LinkUp",color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),
         backgroundColor: AppColors.buttonColor,
         elevation: 5,
         leading: Icon(Icons.location_on,size: 25,color: Colors.white),
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.notification_add,size: 25,color: Colors.white)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.message,size: 25,color: Colors.white)),
+          IconButton(onPressed: (){
+            navigateTo(context, ChatScreen());
+          }, icon: Icon(Icons.message,size: 25,color: Colors.white)),
         ],
       ),
       body: SafeArea(

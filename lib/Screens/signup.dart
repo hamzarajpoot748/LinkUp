@@ -2,6 +2,8 @@
 
  import 'package:flutter/material.dart';
 import 'package:linkup/Custom/custom.dart';
+import 'package:linkup/Screens/home_screen.dart';
+import 'package:linkup/Screens/login.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -35,11 +37,15 @@ class _SignupState extends State<Signup> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
+                  IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon: Icon(Icons.arrow_back)),
                   Row(
                     children: [
                       KText(text: "Already have an Account?",color: AppColors.h2,),
-                      TextButton(onPressed: (){}, 
+                      TextButton(onPressed: (){
+                        navigateTo(context, Login());
+                      }, 
                       child: KText(text: "Log In",fontWeight: FontWeight.bold,fontSize:15, color: AppColors.buttonColor,)),
                     ],
                   ),
@@ -64,7 +70,12 @@ class _SignupState extends State<Signup> {
             children: [
                 KText(text: "Full Name"),
               TextFormFields(
-                validator: (value){},
+                validator: (value){
+                  if(value == null || value.isEmpty){
+                      return "field required";
+                    }
+                    return null;
+                },
                 controller: nameController,
                     prefixIcon: Icon(Icons.person),
                     hintText: "Your full name",
@@ -83,7 +94,12 @@ class _SignupState extends State<Signup> {
             children: [
                 KText(text: "Username"),
               TextFormFields(
-                validator: (value){},
+                validator: (value){
+                  if(value == null || value.isEmpty){
+                      return "field required";
+                    }
+                    return null;
+                },
                 controller: usernameController,
                     prefixIcon: Icon(Icons.alternate_email),
                     hintText: "Choose a username",
@@ -98,7 +114,12 @@ class _SignupState extends State<Signup> {
               Spacebetween(height: 20),
                 KText(text: "Email"),
                 TextFormFields(
-                validator: (value){},
+                validator: (value){
+                  if(value == null || value.isEmpty){
+                      return "field required";
+                    }
+                    return null;
+                },
                   controller: emailController,
                 prefixIcon: Icon(Icons.mail),
                 hintText: "Jon@gmail.com",
@@ -108,7 +129,12 @@ class _SignupState extends State<Signup> {
               Spacebetween(height: 20),
               KText(text: "Password"),
               TextFormFields(
-                validator: (value){},
+                validator: (value){
+                  if(value == null || value.isEmpty){
+                      return "field required";
+                    }
+                    return null;
+                },
                 controller: passController,
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: IconButton(
@@ -123,7 +149,12 @@ class _SignupState extends State<Signup> {
               Spacebetween(height: 20),
                KText(text: "Confirm Password"),
               TextFormFields(
-                validator: (value){},
+                validator: (value){
+                  if(value == null || value.isEmpty){
+                      return "field required";
+                    }
+                    return null;
+                },
                 controller: confirmpassController,
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: IconButton(
@@ -138,18 +169,22 @@ class _SignupState extends State<Signup> {
               Spacebetween(height: 20),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  KText(text: "Confirm your Password?",fontSize: 15,color: AppColors.buttonColor,fontWeight: FontWeight.bold,),
-                ],
-              ),
-              Spacebetween(height: 20),
               Kbutton(
-                text: "Log In",
+                callback: (){
+                  if(_formkey.currentState!.validate()){
+                    nameController.clear();
+                    usernameController.clear();
+                    emailController.clear();
+                    passController.clear();
+                    confirmpassController.clear();
+                    navigateAndRemove(context, HomeScreen());
+                  }else{
+                    "there is some issue";
+                  }
+                  
+                },
+                text: "Sign Up",
               ),
-              Spacebetween(height: 20),
-              CustomDivider(),
           
             ],
           ),

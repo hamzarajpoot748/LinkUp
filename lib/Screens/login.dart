@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkup/Custom/custom.dart';
 import 'package:linkup/Screens/home_screen.dart';
+import 'package:linkup/Screens/signup.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -32,11 +33,15 @@ class _LoginState extends State<Login> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
+                  IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon: Icon(Icons.arrow_back)),
                   Row(
                     children: [
                       KText(text: "Need an Account?",color: AppColors.h2,),
-                      TextButton(onPressed: (){}, 
+                      TextButton(onPressed: (){
+                        navigateTo(context, Signup());
+                      }, 
                       child: KText(text: "SignUp",fontWeight: FontWeight.bold,fontSize:15, color: AppColors.buttonColor,)),
                     ],
                   ),
