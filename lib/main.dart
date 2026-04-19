@@ -1,8 +1,10 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:linkup/Custom/custom_homescreen.dart';
 import 'package:linkup/Screens/home_screen.dart';
 import 'package:linkup/Screens/login.dart';
+import 'package:linkup/Screens/profile_screen.dart';
 import 'package:linkup/Screens/signup.dart';
 import 'package:linkup/Screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        body: Signup(),
+        body: ProfileScreen(),
         ),
     );
   }
