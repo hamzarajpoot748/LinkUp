@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkup/Custom/custom.dart';
 import 'package:linkup/Custom/custom_homescreen.dart';
-import 'package:linkup/Screens/chat_screen.dart';
+import 'package:linkup/Screens/chat_UI/all_chat_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

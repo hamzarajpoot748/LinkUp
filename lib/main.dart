@@ -2,12 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:linkup/Custom/custom_homescreen.dart';
-import 'package:linkup/Screens/chat_screen.dart';
+import 'package:linkup/Screens/chat_UI/all_chat_screen.dart';
+import 'package:linkup/Screens/chat_UI/chat_inperson_screen.dart';
 import 'package:linkup/Screens/home_screen.dart';
-import 'package:linkup/Screens/login.dart';
+import 'package:linkup/Screens/auth_UI_screens/login.dart';
 import 'package:linkup/Screens/profile_screen.dart';
-import 'package:linkup/Screens/signup.dart';
-import 'package:linkup/Screens/splash_screen.dart';
+import 'package:linkup/Screens/auth_UI_screens/signup.dart';
+import 'package:linkup/Screens/auth_UI_screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 void main()async{
   // WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: Scaffold(
-        body: ChatScreen(),
+        body: Signup(),
         ),
     );
   }

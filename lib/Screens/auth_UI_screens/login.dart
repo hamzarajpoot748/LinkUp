@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:linkup/Custom/custom.dart';
 import 'package:linkup/Screens/home_screen.dart';
-import 'package:linkup/Screens/signup.dart';
+import 'package:linkup/Screens/auth_UI_screens/signup.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

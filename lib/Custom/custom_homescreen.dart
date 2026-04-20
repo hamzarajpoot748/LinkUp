@@ -1,5 +1,8 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:linkup/Custom/custom.dart';
+import 'package:linkup/Screens/auth_UI_screens/login.dart';
 
 class CreateStory extends StatefulWidget {
   const CreateStory({super.key});
@@ -93,6 +96,76 @@ class PostActions extends StatelessWidget {
         IconButton(onPressed: () {}, icon: Icon(Icons.thumb_up_alt_outlined)),
         IconButton(onPressed: () {}, icon: Icon(Icons.comment_outlined)),
         IconButton(onPressed: () {}, icon: Icon(Icons.share_outlined)),
+      ],
+    );
+  }
+}
+// 
+// 
+// 
+// 
+class AllChatList extends StatefulWidget {
+  int index;
+  VoidCallback? ontap;
+  AllChatList({super.key, required this.index, this.ontap});
+
+  @override
+  State<AllChatList> createState() => All_ChatListState();
+}
+
+class All_ChatListState extends State<AllChatList> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          onTap: widget.ontap,
+          contentPadding: EdgeInsets.zero,
+          leading: CircleAvatar(
+            radius: 32,
+            backgroundColor: Colors.green,
+          ),
+          title: KText(text: "Person's Name ${widget.index}",color: Colors.black,fontSize: 15,fontWeight: FontWeight.bold,),
+          subtitle: KText(text: "incoming or outgoing message",color: Colors.grey,fontSize: 11),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              KText(text: "11:48"),
+              Stack(
+        children: [
+                Icon(Icons.chat, size: 20),
+                Positioned(
+        right: 0,
+        bottom: -5,
+        child: Container(
+          padding: EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            shape: BoxShape.circle,
+          ),
+          child: Text(
+            "3",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+                ),
+        ],
+                ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 60,),
+          child: Divider(
+            height: 1,
+          // thickness: 0.4,
+          color: Colors.grey,
+          ),
+        ),
       ],
     );
   }
