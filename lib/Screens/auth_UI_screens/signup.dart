@@ -103,7 +103,7 @@ class _SignupState extends State<Signup> {
                                   },
                                   controller: nameController,
                                   prefixIcon: Icon(Icons.person),
-                                  hintText: "Your full name",
+                                  hintText: "Your name",
                                   // borderRadius: BorderRadius.circular(20),
                                   borderColor: Colors.black,
                                 ),
@@ -125,7 +125,7 @@ class _SignupState extends State<Signup> {
                                   },
                                   controller: usernameController,
                                   prefixIcon: Icon(Icons.alternate_email),
-                                  hintText: "Choose a username",
+                                  hintText: "username",
                                   borderColor: Colors.black,
                                 ),
                               ],
@@ -219,16 +219,17 @@ class _SignupState extends State<Signup> {
                 ),
                 Kbutton(
                   callback: () {
-                    if (_formkey.currentState!.validate()) {
-                      nameController.clear();
-                      usernameController.clear();
-                      emailController.clear();
-                      passController.clear();
-                      confirmpassController.clear();
                       navigateAndRemove(context, HomeScreen());
-                    } else {
-                      "there is some issue";
-                    }
+                    // if (_formkey.currentState!.validate()) {
+                    //   nameController.clear();
+                    //   usernameController.clear();
+                    //   emailController.clear();
+                    //   passController.clear();
+                    //   confirmpassController.clear();
+                    //   navigateAndRemove(context, HomeScreen());
+                    // } else {
+                    //   "there is some issue";
+                    // }
                   },
                   text: "Sign Up",
                 ),
