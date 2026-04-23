@@ -1,22 +1,28 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, avoid_print
 
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:linkup/models/post_model.dart';
+import 'package:linkup/services/db_path.dart';
 import 'package:linkup/widgets/custom.dart';
 
-ImagePicker picker = ImagePicker();
-File? selectedImage;
-
-class PostScreen extends StatefulWidget {
-  const PostScreen({super.key});
+class CreatePostScreen extends StatefulWidget {
+  const CreatePostScreen({super.key});
 
   @override
-  State<PostScreen> createState() => _PostScreenState();
+  State<CreatePostScreen> createState() => _CreatePostScreenState();
 }
 
-class _PostScreenState extends State<PostScreen> {
+class _CreatePostScreenState extends State<CreatePostScreen> {
+  String currentUserid = FirebaseAuth.instance.currentUser!.uid;
+  DatabaseReference newPostRef = DbPaths.posts().ref.push();
+  ImagePicker picker = ImagePicker();
+  File? selectedImage;
+  TextEditingController captionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +35,9 @@ class _PostScreenState extends State<PostScreen> {
       ),
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            goBack(context);
+          },
           icon: Icon(Icons.close, size: 35),
         ),
         centerTitle: true,
@@ -39,7 +47,28 @@ class _PostScreenState extends State<PostScreen> {
           fontWeight: FontWeight.bold,
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.check, size: 35)),
+          IconButton(
+            onPressed: () {
+              if (selectedImage == null) {
+                showCustomSnackBar(context,"Select an Image");
+                return;
+              }
+              String? postId = newPostRef.key;
+              PostModel post = PostModel(
+                imageUrl: selectedImage!.path,
+                postId: postId,
+                title: captionController.text,
+                userId: currentUserid,
+              );
+              try {
+                DbPaths obj = DbPaths();
+                obj.ref.push().set(post.toJson());
+              } catch (e) {
+                print(e);
+              }
+            },
+            icon: Icon(Icons.check, size: 35),
+          ),
         ],
       ),
       // backgroundColor: AppColors.background,
@@ -67,6 +96,7 @@ class _PostScreenState extends State<PostScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: TextFormField(
+                  controller: captionController,
                   maxLength: 500,
                   maxLines: 3,
                   decoration: InputDecoration(

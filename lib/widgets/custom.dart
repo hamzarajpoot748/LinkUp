@@ -211,6 +211,27 @@ void navigateAndRemove(BuildContext context, Widget page) {
 // 
 // 
 // 
-Future<void> customDatePicker(BuildContext ctx) async{
-  
+class KSnackBar extends StatelessWidget {
+  const KSnackBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ScaffoldMessenger(
+      child: SnackBar(
+      elevation: 10,
+      content: Center(
+        child: KText(text: "Select an Image",color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),
+      ), 
+    
+    ));
+  }
+}
+void showCustomSnackBar(BuildContext context, String? title){
+  ScaffoldMessenger.of(context).showSnackBar(
+  SnackBar(
+
+    backgroundColor: Colors.red,
+    content: Center(child: KText(text: title!,color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20)),
+  ),
+);
 }

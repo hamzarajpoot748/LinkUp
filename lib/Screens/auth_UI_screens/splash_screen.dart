@@ -1,24 +1,44 @@
+// ignore_for_file: avoid_print, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:linkup/Screens/AppUI/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:linkup/Screens/AppUI/post_screen.dart';
+
+    String? userid ;
+    
+    
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+  
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 3),(){
+
+Future<void> initUser() async{
+  if(FirebaseAuth.instance.currentUser == null){
+    await FirebaseAuth.instance.signInAnonymously();
+    userid = FirebaseAuth.instance.currentUser!.uid;
+  }
+  Future.delayed(Duration(seconds: 2),(){
       Navigator.pushReplacement(
     // ignore: use_build_context_synchronously
     context,
     MaterialPageRoute(builder: (context) => HomeScreen()),
   );
     });
+}
+
+
+  @override
+  void initState(){
+    super.initState();
+     initUser();
+    
   }
   @override
   Widget build(BuildContext context) {
