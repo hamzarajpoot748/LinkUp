@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linkup/Custom/custom.dart';
+import 'package:linkup/widgets/custom.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

@@ -1,8 +1,8 @@
 // ignore_for_file: unused_local_variable, body_might_complete_normally_nullable
 
 import 'package:flutter/material.dart';
-import 'package:linkup/Custom/custom.dart';
-import 'package:linkup/Screens/home_screen.dart';
+import 'package:linkup/widgets/custom.dart';
+import 'package:linkup/Screens/AppUI/home_screen.dart';
 import 'package:linkup/Screens/auth_UI_screens/login.dart';
 
 class Signup extends StatefulWidget {

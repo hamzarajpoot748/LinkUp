@@ -1,8 +1,8 @@
 // ignore_for_file: body_might_complete_normally_nullable
 
 import 'package:flutter/material.dart';
-import 'package:linkup/Custom/custom.dart';
-import 'package:linkup/Custom/custom_homescreen.dart';
+import 'package:linkup/widgets/custom.dart';
+import 'package:linkup/widgets/custom_homescreen.dart';
 import 'package:linkup/Screens/chat_UI/all_chat_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -43,22 +43,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: Icon(Icons.person_add_alt_1_rounded,size: 30,),
                   ),
                   Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        hintText: "Whats on your mind?",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
+                    child: InkWell(
+                      onTap: (){
+                        
+                      },
+                      child: Container(
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(width: 1,color: const Color.fromARGB(255, 53, 52, 52))
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5)
+                        child: Center(
+                          child: KText(text: "Whats on your mind",fontSize: 15,),
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white
                       ),
-                      ),
+                    ),
                     ),
                     IconButton(onPressed: (){}, 
                   icon: Icon(Icons.image,size: 30),

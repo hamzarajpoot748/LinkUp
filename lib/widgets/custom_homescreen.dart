@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:linkup/Custom/custom.dart';
+import 'package:linkup/widgets/custom.dart';
 import 'package:linkup/Screens/auth_UI_screens/login.dart';
 
 class CreateStory extends StatefulWidget {
@@ -58,7 +58,7 @@ class _PostsHomeScreenState extends State<PostsHomeScreen> {
             backgroundColor: Colors.blue,
           ),
           title: KText(text: "title"),
-          subtitle: KText(text: "subtitle"),
+          subtitle: KText(text: "3-6-2025"),
           trailing: IconButton(onPressed: (){}, icon: Icon(Icons.more_horiz)),
         ),
         Container(

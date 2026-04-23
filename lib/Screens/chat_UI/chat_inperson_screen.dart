@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:linkup/classes/chat_inperson_class.dart';
+import 'package:linkup/models/chat_inperson_class.dart';
 
 class ChatInPerson extends StatefulWidget {
   const ChatInPerson({super.key});

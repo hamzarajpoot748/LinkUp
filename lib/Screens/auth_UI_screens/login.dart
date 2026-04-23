@@ -1,8 +1,8 @@
 // ignore_for_file: unused_import, no_leading_underscores_for_local_identifiers, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:linkup/Custom/custom.dart';
-import 'package:linkup/Screens/home_screen.dart';
+import 'package:linkup/widgets/custom.dart';
+import 'package:linkup/Screens/AppUI/home_screen.dart';
 import 'package:linkup/Screens/auth_UI_screens/signup.dart';
 
 class Login extends StatefulWidget {
